@@ -13,5 +13,5 @@ ftp:      Sends expected FTP commands (Default port 21)<br>
 ssh:      Sends SSH type banner ie: SSH-1.5-HeyohSSH_2.1 (Default port 22)<br>
 boping:   Sends a Back Orifice Ping (Default Port 31337 w/ source port of 53)<br>
 <br>
-NOTE: for all commands to work properly it is suggested to add an account to remote machine withusername and password of heyoh.<br>
+NOTE: for all commands to work properly it is suggested to add an account to remote machine with username and password of heyoh.<br>
 
