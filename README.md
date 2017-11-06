@@ -5,6 +5,7 @@ httpget:  HTTP Request using method of GET to resource of / (Default port 80)<br
 httpput:  HTTP Request using method of PUT to resource of / (Default port 80)<br>
 httppost: HTTP Request using method of POST to resource of / (Default port 80)<br>
 httpbin:  HTTP Request that contains binary data (Default port 80)<br>
+httpxss:  HTTP Request that contains Cross-Site Scriping (XSS) Payload (Default port 80)<br>
 wiz:      Connection data of "WIZ" sent to given port (Default port 25)<br>
 smtp:     Sends expected SMTP commands (Default port 25)<br>
 eicar:    Send the EICAR virus testfile via SMTP (Default port 25)<br>

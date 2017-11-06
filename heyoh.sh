@@ -24,6 +24,8 @@
 #   added pop3 support
 # version 3.7 - jerry
 #   script cleanup
+# version 3.8 - jerry 
+#   added support for XSS payload 
 ##############
 #  This script can be used to spawn multiple connections to a single
 #  port and send expected data.  
@@ -41,6 +43,7 @@ WHOAMI=`whoami`
 HOSTNAME=`hostname`
 DATE=""
 body=""
+XSS="GET /<script>alert('heyoh!');</script> HTTP/1.0\r\nHost: heyoh.sh\r\nReferer: http://heyoh.sh\r\nUser-Agent: heyoh\r\n"
 
 
 EMAIL()
@@ -115,6 +118,7 @@ httpget:  HTTP Request using method of GET to resource of / (Default port 80)
 httpput:  HTTP Request using method of PUT to resource of / (Default port 80)
 httppost: HTTP Request using method of POST to resource of / (Default port 80)
 httpbin:  HTTP Request that contains binary data (Default port 80)
+httpxss:  HTTP Request that contains Cross-Site Scriping (XSS) Payload (Default port 80) 
 wiz:      Connection data of "WIZ" sent to given port (Default port 25)
 smtp:     Sends expected SMTP commands (Default port 25)
 eicar:    Send the EICAR virus testfile via SMTP (Default port 25)
@@ -245,6 +249,26 @@ case "$proto" in
                 	echo -e $GET$BINARY | $nc -w 1 $desthost $http > /dev/null 2>&1 &
                 fi
 		sleep $sleep
+                echo -ne "$loopcount             \015"
+                loopcount=`expr $loopcount - 1`
+          done
+          echo "Done!"
+        else
+          echo "fatal: $http port is not open"
+          exit 0
+        fi
+        ;;
+
+'httpxss')
+        if nc -z $desthost $http &>/dev/null; then
+          echo "Sending $loopcount requests to $desthost..."
+          while [ $loopcount -ne 0 ] ; do
+                if [ $verbose -ne 0 ] ; then
+                        echo -e $XSS | $nc -w 1 -v $desthost $http
+                else
+                        echo -e $XSS | $nc -w 1 $desthost $http > /dev/null 2>&1 &
+                fi
+                sleep $sleep
                 echo -ne "$loopcount             \015"
                 loopcount=`expr $loopcount - 1`
           done
