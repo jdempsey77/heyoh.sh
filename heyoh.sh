@@ -31,9 +31,9 @@
 #  port and send expected data.  
 ##############
 version="v3.7"
-GET="GET / HTTP/1.0\r\nHost: heyoh.sh\r\nReferer: http://heyoh.sh\r\nUser-Agent: heyohi\r\n"
-PUT="PUT / HTTP/1.0\r\nHost: heyoh.sh\r\nReferer: http://heyoh.sh\r\nUser-Agent: heyoh\r\n"
-POST="POST / HTTP/1.0\r\nHost: heyoh.sh\r\nReferer: http://heyoh.sh\r\nUser-Agent: heyoh\r\n"
+GET="GET / HTTP/1.0\r\nHost: $1\r\nReferer: http://heyoh.sh\r\nUser-Agent: heyohi\r\n"
+PUT="PUT / HTTP/1.0\r\nHost: $1\r\nReferer: http://heyoh.sh\r\nUser-Agent: heyoh\r\n"
+POST="POST / HTTP/1.0\r\nHost: $1\r\nReferer: http://heyoh.sh\r\nUser-Agent: heyoh\r\n"
 BINARY="\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD\xDD"
 BOPING="\x1D\xA3\x2B\x85\x4F\x55\x00\xBB\x37\xF8\xAB\x30\x72\x2C\xAF\x80\xB1\x66\xBC\x9C\x7B\xF4\x5E\x41\x87\xBF\x16\x1C\x27\x3F\x87\xC5\x1E\xCC\x67\x45\xC0\xBE\xE0\xC7\x24\xFD\x2F"
 nc="/usr/bin/nc"
@@ -43,7 +43,7 @@ WHOAMI=`whoami`
 HOSTNAME=`hostname`
 DATE=""
 body=""
-XSS="GET /<script>alert('heyoh!');</script> HTTP/1.0\r\nHost: heyoh.sh\r\nReferer: http://heyoh.sh\r\nUser-Agent: heyoh\r\n"
+XSS="GET /<script>alert('heyoh!');</script> HTTP/1.0\r\nHost: $1\r\nReferer: http://heyoh.sh\r\nUser-Agent: heyoh\r\n"
 
 
 EMAIL()
