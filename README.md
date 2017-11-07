@@ -16,3 +16,7 @@ boping:   Sends a Back Orifice Ping (Default Port 31337 w/ source port of 53)<br
 <br>
 NOTE: for all commands to work properly it is suggested to add an account to remote machine with username and password of heyoh.<br>
 
+
+Known Issues:
+
+1. OSX version of bash uses their own built-in echo command that doesn't accept "-n" which makes the outut of loopcount not look as pretty on OSX.
