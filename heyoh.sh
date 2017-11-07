@@ -30,7 +30,7 @@
 #  This script can be used to spawn multiple connections to a single
 #  port and send expected data.  
 ##############
-version="v3.7"
+version="v3.8"
 GET="GET / HTTP/1.0\r\nHost: $1\r\nReferer: http://heyoh.sh\r\nUser-Agent: heyohi\r\n"
 PUT="PUT / HTTP/1.0\r\nHost: $1\r\nReferer: http://heyoh.sh\r\nUser-Agent: heyoh\r\n"
 POST="POST / HTTP/1.0\r\nHost: $1\r\nReferer: http://heyoh.sh\r\nUser-Agent: heyoh\r\n"
